@@ -1,142 +1,63 @@
 import meriise from "./assets/images/meriise.png";
 import pikasit from "./assets/images/pikasit.png";
-import "./App.css";
+import "./index.css";
 
 function App() {
-
     return (
-        <>
+        <div
+            data-layer="Android Compact - 8"
+            className="AndroidCompact8 w-96 h-[939px] relative bg-amber-50 overflow-hidden"
+        >
+            <img
+                data-layer="MERIISE FOUNDATION logo 2.0 1"
+                className="MeriiseFoundationLogo201 w-64 h-32 left-[71px] top-[72px] absolute"
+                src="{meriise}"
+            />
             <div
-                data-layer="Android Compact - 8"
-                className="AndroidCompact8"
-                style={{
-                    width: 412,
-                    height: 939,
-                    position: "relative",
-                    background: "#FFFCF0",
-                    overflow: "hidden",
-                }}
+                data-layer="WE ARE"
+                className="WeAre left-[44px] top-[413px] absolute justify-start"
             >
-                <img
-                    data-layer="MERIISE FOUNDATION logo 2.0 1"
-                    className="MeriiseFoundationLogo201"
-                    style={{
-                        width: 270,
-                        height: 122,
-                        left: 71,
-                        top: 72,
-                        position: "absolute",
-                    }}
-                    src={meriise}
-                />
-                <div
-                    data-layer="WE ARE"
-                    className="WeAre"
-                    style={{ left: 44, top: 413, position: "absolute" }}
-                >
-                    <span style="color: '#FFCA02', fontSize: 45, fontFamily: 'Pokemon Solid', fontWeight: '400', wordWrap: 'break-word'">
-                        WE{" "}
-                    </span>
-                    <span style="color: '#FFCA02', fontSize: 45, fontFamily: 'Pokemon Solid', fontWeight: '400', wordWrap: 'break-word'">
-                        ARE{" "}
-                    </span>
-                </div>
-                <div
-                    data-layer="HIRING"
-                    className="Hiring"
-                    style={{
-                        left: 32,
-                        top: 488,
-                        position: "absolute",
-                        color: "#FFCA02",
-                        fontSize: 72,
-                        fontFamily: "Pokemon Solid",
-                        fontWeight: "400",
-                        lineHeight: 108.57,
-                        letterSpacing: 2.88,
-                        wordWrap: "break-word",
-                    }}
-                >
-                    HIRING
-                </div>
-                <img
-                    data-layer="pika 1"
-                    className="Pika1"
-                    style={{
-                        width: 141,
-                        height: 140,
-                        left: 257,
-                        top: 461,
-                        position: "absolute",
-                    }}
-                    src={pikasit}
-                />
-                <div
-                    data-layer="Trainers be Ready"
-                    className="TrainersBeReady"
-                    style={{
-                        left: 67,
-                        top: 341,
-                        position: "absolute",
-                        color: "#316EB5",
-                        fontSize: 32,
-                        fontFamily: "Fredoka One",
-                        fontWeight: "400",
-                        wordWrap: "break-word",
-                    }}
-                >
-                    Trainers be Ready
-                </div>
-                <div
-                    data-layer="A Section-8 company"
-                    className="ASection8Company"
-                    style={{
-                        left: 206,
-                        top: 182,
-                        position: "absolute",
-                        color: "#329BCB",
-                        fontSize: 12,
-                        fontFamily: "Fredoka",
-                        fontWeight: "400",
-                        wordWrap: "break-word",
-                    }}
-                >
-                    A Section-8 company
-                </div>
-                <div
-                    data-layer="Rectangle 1"
-                    className="Rectangle1"
-                    style={{
-                        width: 170,
-                        height: 55,
-                        left: 121,
-                        top: 727,
-                        position: "absolute",
-                        background: "#FFE500",
-                        boxShadow: "6px 5px 0px black",
-                        borderRadius: 10,
-                        outline: "2px black solid",
-                        outlineOffset: "-1px",
-                    }}
-                />
-                <div
-                    data-layer="Apply"
-                    className="Apply"
-                    style={{
-                        left: 164,
-                        top: 731,
-                        position: "absolute",
-                        color: "#316EB5",
-                        fontSize: 32,
-                        fontFamily: "Fredoka",
-                        fontWeight: "600",
-                        wordWrap: "break-word",
-                    }}
-                >
-                    Apply
-                </div>
+                <span class="text-yellow-400 text-5xl font-normal font-['Pokemon_Solid']">
+                    WE{" "}
+                </span>
+                <span class="text-yellow-400 text-5xl font-normal font-['Pokemon_Solid']">
+                    ARE{" "}
+                </span>
             </div>
-        </>
+            <div
+                data-layer="HIRING"
+                className="Hiring left-[32px] top-[488px] absolute justify-start text-yellow-400 text-7xl font-normal font-['Pokemon_Solid'] leading-[108.57px] tracking-[2.88px]"
+            >
+                HIRING
+            </div>
+            <img
+                data-layer="pika 1"
+                className="Pika1 w-36 h-36 left-[257px] top-[461px] absolute"
+                src={pikasit}
+            />
+            <div
+                data-layer="Trainers be Ready"
+                className="TrainersBeReady left-[67px] top-[341px] absolute justify-start text-blue-800 text-3xl font-normal font-['Fredoka_One']"
+            >
+                Trainers be Ready
+            </div>
+            <div
+                data-layer="A Section-8 company"
+                className="ASection8Company left-[206px] top-[182px] absolute justify-start text-sky-500 text-xs font-normal font-['Fredoka']"
+            >
+                A Section-8 company
+            </div>
+            <div
+                data-layer="Rectangle 1"
+                className="Rectangle1 w-44 h-14 left-[121px] top-[727px] absolute bg-yellow-400 rounded-[10px] shadow-[6px_5px_0px_0px_rgba(0,0,0,1.00)] outline outline-2 outline-offset-[-1px] outline-black"
+            />
+            <div
+                data-layer="Apply"
+                className="Apply left-[164px] top-[731px] absolute justify-start text-blue-800 text-3xl font-semibold font-['Fredoka']"
+            >
+                Apply
+            </div>
+        </div>
     );
 }
 
