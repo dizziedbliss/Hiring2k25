@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 
 export const App = () => {
@@ -8,5 +7,3 @@ export const App = () => {
     </div>
   )
 }
-=======
->>>>>>> 09cd1eb20595a83196c0a86e4c01aca035204beb
