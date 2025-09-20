@@ -113,7 +113,7 @@ const CongratulationsPage = ({ domain, formData }) => {
 
           <h2 className="text-xl font-bold text-gray-800">Congratulations</h2>
           <p className="text-gray-600 mb-4">
-            You have been add to the priority list
+            You're selected for priority list
           </p>
 
           {/* Re-architected the card layout to use Flexbox for proper alignment */}
@@ -165,7 +165,7 @@ const CongratulationsPage = ({ domain, formData }) => {
                 <img
                   src="./meriise.png"
                   alt="Small Logo"
-                  className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                  className="absolute bottom-4 right-4 h-8 w-auto opacity-80 z-20"
                 />
               </>
             )}

@@ -1,14 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
-// The Pokeball component is now defined inside this file to resolve the import error.
-const Pokeball = ({ className = "" }) => (
-  <div
-    className={`absolute w-12 h-12 rounded-full bg-white border-4 border-black overflow-hidden flex flex-col items-center justify-center ${className}`}
-  >
-    <div className="w-full h-1/2 bg-red-500"></div>
-    <div className="absolute w-4 h-4 rounded-full bg-white border-2 border-black"></div>
-  </div>
-);
+import Pokeball from "../components/Pokeball.jsx";
 
 const CongratulationsPage = ({ domain, formData }) => {
   const [pokemon, setPokemon] = useState(null);
@@ -53,34 +44,11 @@ const CongratulationsPage = ({ domain, formData }) => {
     fetchRandomPokemon();
   }, []);
 
-  // --- FIX START ---
-  // Updated handleSave to use html2canvas for downloading the card
   const handleSave = () => {
-    // First, check if the html2canvas library is available
-    if (cardRef.current && typeof html2canvas === "function") {
-      html2canvas(cardRef.current, {
-        useCORS: true, // Crucial for fetching the external Pokémon image
-        backgroundColor: null, // Maintains transparency
-        scale: 2, // Increase scale for higher resolution output
-      }).then((canvas) => {
-        // Create a temporary link element to trigger the download
-        const link = document.createElement("a");
-        // Set the download filename using the student's name
-        link.download = `${formData.name || "trainer"}-card.png`;
-        // Convert the canvas to a PNG image data URL
-        link.href = canvas.toDataURL("image/png");
-        // Programmatically click the link to start the download
-        link.click();
-      });
-    } else {
-      // Fallback alert if the library isn't loaded
-      console.error(
-        "html2canvas is not loaded. Make sure to include it in your index.html"
-      );
-      alert("Could not save the card. The required library is missing.");
-    }
+    alert(
+      "In a real app, this would save the card as an image! You would need a library like html2canvas for this functionality."
+    );
   };
-  // --- FIX END ---
 
   if (!domain) {
     return (
@@ -93,11 +61,10 @@ const CongratulationsPage = ({ domain, formData }) => {
   return (
     <main className="min-h-screen w-full bg-gray-200 flex items-center justify-center p-4 font-sans">
       <div className="w-full max-w-sm mx-auto flex flex-col items-center gap-y-5 text-center animate-fade-in">
-        {/* Removed negative margins to keep the logo inside the container flow */}
         <img
           src="./meriise.png"
           alt="MERIISE Foundation Logo"
-          className="mx-auto h-32 object-contain"
+          className="mx-auto h-32 object-contain mt-[-50px] mr-[30px]"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
@@ -113,13 +80,12 @@ const CongratulationsPage = ({ domain, formData }) => {
 
           <h2 className="text-xl font-bold text-gray-800">Congratulations</h2>
           <p className="text-gray-600 mb-4">
-            You have been add to the priority list
+            You're selected for priority list
           </p>
 
-          {/* Re-architected the card layout to use Flexbox for proper alignment */}
           <div
             ref={cardRef}
-            className="w-full aspect-[3/4] bg-[#1d1d1d] rounded-2xl p-4 relative overflow-hidden shadow-2xl flex flex-col"
+            className="w-full aspect-[3/4] bg-[#1d1d1d] rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden shadow-2xl"
           >
             {loading || !pokemon ? (
               <div className="text-white flex items-center justify-center h-full">
@@ -127,51 +93,43 @@ const CongratulationsPage = ({ domain, formData }) => {
               </div>
             ) : (
               <>
-                {/* Decorative Background Elements */}
-                <p className="absolute left-3 top-3 text-4xl md:text-5xl font-bold text-white/40 font-pokemon-hollow tracking-[6px] z-0">
-                  #{String(pokemon.id).padStart(4, "0")}
-                </p>
-                <p
-                  className="absolute right-3 top-1/2 -translate-y-1/2 font-pokemon-hollow text-4xl md:text-5xl font-bold text-white capitalize tracking-widest z-0"
-                  style={{ writingMode: "vertical-rl" }}
-                >
-                  {pokemon.name}
-                </p>
-
-                {/* Image Container (Takes up remaining space) */}
-                <div className="flex-grow w-full relative flex items-center justify-center">
-                  <img
-                    src={pokemon.image}
-                    alt={pokemon.name}
-                    crossOrigin="anonymous" // Important: Allows html2canvas to render the external image
-                    className="max-w-full max-h-full object-contain z-10"
-                  />
+                <div className="relative flex justify-between items-start">
+                  {/* Big faded ID in the background */}
+                  <p className="absolute left-3 top-3 text-4xl md:text-5xl font-bold text-white/40 font-pokemon-hollow tracking-[6px] z-[20]">
+                    #{String(pokemon.id).padStart(4, "0")}
+                  </p>
+                  {/* Vertical Pokémon name on the right, above the image */}
+                  <p
+                    className="absolute right-3 top-1/2 translate-y-20 font-pokemon-hollow z-[200] text-4xl md:text-5xl font-bold text-white capitalize tracking-widest"
+                    style={{ writingMode: "vertical-rl" }}
+                  >
+                    {pokemon.name}
+                  </p>
                 </div>
-
-                {/* Details Container (Fixed at the bottom) */}
-                <div className="flex-shrink-0 text-center z-10 pt-2">
+                <img
+                  src={pokemon.image}
+                  alt={pokemon.name}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-28 w-3/4 h-auto z-[201]"
+                />
+                <div className="z-10">
                   <h3 className="text-3xl font-bold text-white capitalize">
                     {formData.name || "Trainer"}
                   </h3>
-                  <p className="text-lg font-semibold text-white uppercase tracking-wider mt-1">
-                    {formData.usn || "N/A"}
-                  </p>
-                  <p className="text-md font-semibold text-white mt-1">
+                  <p className="text-sm text-blue-300">USN</p>
+                  <p className="text-lg font-semibold text-white">
                     {domain.name}
                   </p>
                 </div>
-
-                {/* MERIISE Logo (Absolute position, on top) */}
                 <img
                   src="./meriise.png"
                   alt="Small Logo"
-                  className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                  className="absolute bottom-4 right-4 h-8 w-auto opacity-80"
                 />
               </>
             )}
           </div>
           <p className="text-xs text-gray-500 mt-2">
-            *Please bring the copy to the Auditions
+            *Please bring a digital copy of this to the Auditions
           </p>
           <button
             onClick={handleSave}

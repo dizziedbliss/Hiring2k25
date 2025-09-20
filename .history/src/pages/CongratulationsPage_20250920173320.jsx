@@ -165,7 +165,7 @@ const CongratulationsPage = ({ domain, formData }) => {
                 <img
                   src="./meriise.png"
                   alt="Small Logo"
-                  className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                  className="absolute bottom-4 right-4 h-10 w-auto opacity-80 z-20"
                 />
               </>
             )}

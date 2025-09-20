@@ -53,34 +53,25 @@ const CongratulationsPage = ({ domain, formData }) => {
     fetchRandomPokemon();
   }, []);
 
-  // --- FIX START ---
-  // Updated handleSave to use html2canvas for downloading the card
   const handleSave = () => {
-    // First, check if the html2canvas library is available
     if (cardRef.current && typeof html2canvas === "function") {
+      // Check if html2canvas is loaded
       html2canvas(cardRef.current, {
-        useCORS: true, // Crucial for fetching the external Pokémon image
-        backgroundColor: null, // Maintains transparency
-        scale: 2, // Increase scale for higher resolution output
+        useCORS: true, // Important for external images like the Pokémon
+        backgroundColor: null, // Use transparent background
       }).then((canvas) => {
-        // Create a temporary link element to trigger the download
         const link = document.createElement("a");
-        // Set the download filename using the student's name
         link.download = `${formData.name || "trainer"}-card.png`;
-        // Convert the canvas to a PNG image data URL
         link.href = canvas.toDataURL("image/png");
-        // Programmatically click the link to start the download
         link.click();
       });
     } else {
-      // Fallback alert if the library isn't loaded
       console.error(
         "html2canvas is not loaded. Make sure to include it in your index.html"
       );
       alert("Could not save the card. The required library is missing.");
     }
   };
-  // --- FIX END ---
 
   if (!domain) {
     return (
@@ -113,9 +104,10 @@ const CongratulationsPage = ({ domain, formData }) => {
 
           <h2 className="text-xl font-bold text-gray-800">Congratulations</h2>
           <p className="text-gray-600 mb-4">
-            You have been add to the priority list
+            You're selected for priority list
           </p>
 
+          {/* --- FIX START --- */}
           {/* Re-architected the card layout to use Flexbox for proper alignment */}
           <div
             ref={cardRef}
@@ -143,7 +135,7 @@ const CongratulationsPage = ({ domain, formData }) => {
                   <img
                     src={pokemon.image}
                     alt={pokemon.name}
-                    crossOrigin="anonymous" // Important: Allows html2canvas to render the external image
+                    crossOrigin="anonymous"
                     className="max-w-full max-h-full object-contain z-10"
                   />
                 </div>
@@ -165,13 +157,14 @@ const CongratulationsPage = ({ domain, formData }) => {
                 <img
                   src="./meriise.png"
                   alt="Small Logo"
-                  className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                  className="absolute bottom-4 right-4 h-8 w-auto opacity-80 z-20"
                 />
               </>
             )}
           </div>
+          {/* --- FIX END --- */}
           <p className="text-xs text-gray-500 mt-2">
-            *Please bring the copy to the Auditions
+            *Please bring a digital copy of this to the Auditions
           </p>
           <button
             onClick={handleSave}
