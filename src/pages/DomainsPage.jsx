@@ -10,7 +10,7 @@ const DomainsPage = ({ onNavigate }) => {
             <img
                 src="./meriise.png"
                 alt="MERIISE Foundation Logo"
-                className="mx-auto h-20 object-contain"
+                className="mx-auto h-32 object-contain mt-[-50px] mr-[30px]"
                 onError={(e) => {
                     e.target.onerror = null;
                     e.target.src =
@@ -18,7 +18,7 @@ const DomainsPage = ({ onNavigate }) => {
                 }}
             />
             <div className="w-full max-w-md mx-auto flex flex-col items-center gap-y-6 animate-fade-in">
-                <h2 className=" font-pokemon-solid text-5xl md:text-7xl tracking-[0] leading-[45px] text-center [-webkit-text-stroke:3px_#316eb5] mb-[-20px] text-[#ffca02] [text-shadow: -3px_8px_0.9px_#000000E1] place-self-center p-4">
+                <h2 className=" font-pokemon-solid text-5xl md:text-7xl tracking-[5px] text-center [-webkit-text-stroke:3px_#316eb5] mb-[-50px] text-[#ffca02] [text-shadow: -3px_8px_0.9px_#000000E1] place-self-center p-4">
                     Domains
                 </h2>
                 <div className="w-full flex flex-col gap-y-5">

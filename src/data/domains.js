@@ -6,9 +6,9 @@ export const domainsData = [
         description:
             "Love designing, editing, or just making content that clicks? Then the Digital Team is your place to bring ideas, visuals, and edit videos, and bring them to life in a fun, creative way.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png", // Pikachu
+            "./pikahello.png", // Pikachu
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png", // Raichu
+            "./pichu.png", // Raichu
         theme: {
             bg: "bg-yellow-400",
             button: "bg-yellow-600",
@@ -17,17 +17,17 @@ export const domainsData = [
             darkerBg: "bg-yellow-500",
         },
         content:
-            "Welcome to the Digital Team — the place where ideas become visuals that make people stop scrolling. We design posters, reels, carousels, and short edits that make college life look as exciting as it truly is. Whether you’re into snappy edits, subtle color grading, clever captions, or motion graphics, you’ll find your flow here. We use tools like Canva, Figma, Photoshop, and Premiere Pro, but what matters most is your eye for detail and the joy of creating something people love to share. If you’ve ever looked at a post and thought ‘I could make that cleaner,’ you’ll fit right in. We brainstorm together, iterate fast, and learn by doing — you’ll start small and level up quickly. If storytelling through visuals makes you happy, this is your zone.",
+            "The Digital Team is where creativity meets action. We design posters, reels, carousels, and edits that capture the real buzz of college life. From quick edits and color grading to captions and motion graphics — this is where stories come alive.\n\nWhy join? You’ll learn tools like Canva, Figma, Photoshop, and Premiere Pro while building design, branding, and storytelling skills. Every project you make will not only boost MERIISE’s vibe but also your own creative confidence.",
     },
     {
         id: "technical",
-        name: "Technical weeb",
+        name: "Technical",
         description:
             "If you like solving problems or building new things, the Technical Team is for you. Dive deep into the world of coding, explore software and apps, create logical flows, solve challenges, and slowly sharpen your skills to turn your future ideas into smart solutions.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png", // Charmander
+            "./chartech.png", // Charmander
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png", // Charmeleon
+            "./charizard.png", // Charmeleon
         theme: {
             bg: "bg-orange-400",
             button: "bg-orange-600",
@@ -44,9 +44,9 @@ export const domainsData = [
         description:
             "Like drawing, painting, or just being creative? The Creative Team is all about turning your imagination into beautiful characters and artwork. It's a space to create your own story of your creativity.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png", // Bulbasaur
+            "./bulbacreative.png", // Bulbasaur
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png", // Ivysaur
+            "./bulbaevo.png", // Ivysaur
         theme: {
             bg: "bg-green-400",
             button: "bg-green-600",
@@ -63,9 +63,9 @@ export const domainsData = [
         description:
             "If you enjoy writing or communicating, the Editorial Team is the place to be. It helps in voicing ideas clearly, create interesting content, and improve your communication skills as you go.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png", // Squirtle
+            "./squirtleedit.png", // Squirtle
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png", // Wartortle
+            "./squirtleuncle.png", // Wartortle
         theme: {
             bg: "bg-sky-400",
             button: "bg-sky-600",
@@ -82,9 +82,9 @@ export const domainsData = [
         description:
             "Got a big idea? Love to explore and experiment? The Startup & Research team is where you can nurture your inner innovator. We brainstorm, build business plans, and turn curiosity into real-world projects.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png", // Porygon
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/656.png", // Porygon
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/233.png", // Porygon2
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/657.png", // Porygon2
         theme: {
             bg: "bg-purple-400",
             button: "bg-purple-600",
@@ -101,9 +101,9 @@ export const domainsData = [
         description:
             "Love bringing people together and making things happen? The Event Organizing team is your stage. From planning workshops to managing large-scale fests, you'll learn how to lead, coordinate, and create memorable experiences.",
         imageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png", // Jigglypuff
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/393.png", // Jigglypuff
         evolvedImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/40.png", // Wigglytuff
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png", // Wigglytuff
         theme: {
             bg: "bg-indigo-400",
             button: "bg-indigo-600",

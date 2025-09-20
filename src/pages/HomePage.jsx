@@ -6,7 +6,7 @@ const HomePage = ({ onNavigate }) => (
             <img
                 src="./meriise.png"
                 alt="MERIISE Foundation Logo"
-                className="mx-auto h-40 object-contain"
+                className="mx-auto h-32 object-contain mt-[-50px] mr-[30px]"
                 onError={(e) => {
                     e.target.onerror = null;
                     e.target.src =
@@ -45,7 +45,7 @@ const HomePage = ({ onNavigate }) => (
 
                 <button
                     onClick={() => onNavigate("domains")}
-                    className="w-48 bg-yellow-400 text-gray-900 font-bold text-2xl py-3 px-6 rounded-xl border-[3px] border-black shadow-[6px_6px_0_0_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 active:bg-yellow-500 font-mono"
+                    className="w-48 bg-yellow-400 text-gray-900  text-2xl py-3 px-6 rounded-xl border-[3px] border-black shadow-[6px_6px_0_0_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 active:bg-yellow-500 font-fredoka font-semibold"
                 >
                     Apply
                 </button>

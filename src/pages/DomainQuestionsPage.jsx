@@ -23,7 +23,7 @@ const DomainQuestionsPage = ({ domain, onNavigate }) => {
             <img
                 src="./meriise.png"
                 alt="MERIISE Foundation Logo"
-                className="mx-auto h-20 object-contain"
+                className="mx-auto h-32 object-contain mt-[-50px] mr-[30px]"
                 onError={(e) => {
                     e.target.onerror = null;
                     e.target.src =
@@ -31,14 +31,14 @@ const DomainQuestionsPage = ({ domain, onNavigate }) => {
                 }}
             />
             <div className="w-full max-w-sm mx-auto flex flex-col items-center gap-y-4 animate-fade-in relative">
-                <div className="relative w-full flex items-center justify-center p-4 bg-white/50 rounded-2xl">
+                <div className="relative w-full flex items-center justify-center p-4 bg-white/80 rounded-2xl">
                     <img
                         src={domain.evolvedImageUrl}
                         alt={domain.name}
                         className="h-24 absolute -left-12 -bottom-8"
                     />
                     <h1
-                        className="text-4xl font-bold text-white font-pokemon-hollow tracking-[5px]"
+                        className="text-4xl text-center text-white font-pokemon-hollow tracking-[4px]"
                         style={{ WebkitTextStroke: "1px #000000FF" }}
                     >
                         {domain.name}
@@ -64,7 +64,7 @@ const DomainQuestionsPage = ({ domain, onNavigate }) => {
                     <div className="text-center mt-6">
                         <button
                             onClick={() => onNavigate("domainForm", domain.id)}
-                            className="px-6 py-2 bg-white text-gray-800 font-bold rounded-lg shadow-md border-2 border-gray-300"
+                            className={`px-6 py-2 font-fredoka bg-white text-gray-800  rounded-lg shadow-md border-2 ${domain.theme.border} font-semibold`}
                         >
                             Claim your card
                         </button>

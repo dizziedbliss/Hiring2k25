@@ -67,7 +67,7 @@ const CongratulationsPage = ({ domain, formData }) => {
                 <img
                     src="./meriise.png"
                     alt="MERIISE Foundation Logo"
-                    className="mx-auto h-20 object-contain"
+                    className="mx-auto h-32 object-contain mt-[-50px] mr-[30px]"
                     onError={(e) => {
                         e.target.onerror = null;
                         e.target.src =
@@ -138,7 +138,7 @@ const CongratulationsPage = ({ domain, formData }) => {
                     </p>
                     <button
                         onClick={handleSave}
-                        className="mt-4 px-6 py-2 bg-white text-gray-800 font-bold rounded-lg shadow-md border-2 border-gray-300"
+                        className="mt-4 px-6 py-2 bg-white text-gray-800 font-fredoka font-semibold rounded-lg shadow-md border-2 border-gray-300"
                     >
                         Click to save this
                     </button>
