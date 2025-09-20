@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { domainsData } from "/src/data/domains.js";
+import { domainsData } from "./data/domains.js";
 
 // Page Components
-import HomePage from "/src/pages/HomePage.jsx";
-import DomainsPage from "/src/pages/DomainsPage.jsx";
-import DomainQuestionsPage from "/src/pages/DomainQuestionsPage.jsx";
-import DomainFormPage from "/src/pages/DomainFormPage.jsx";
-import CongratulationsPage from "/src/pages/CongratulationsPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import DomainsPage from "./pages/DomainsPage.jsx";
+import DomainQuestionsPage from "./pages/DomainQuestionsPage.jsx";
+import DomainFormPage from "./pages/DomainFormPage.jsx";
+import CongratulationsPage from "./pages/CongratulationsPage.jsx";
 
 const App = () => {
     const [page, setPage] = useState("home");

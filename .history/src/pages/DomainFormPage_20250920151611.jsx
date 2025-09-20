@@ -121,7 +121,7 @@ import Pokeball from "../components/Pokeball.jsx";
 // import { getDatabase, ref, set } from "../../firebase/database";
 // import { app } from "../../Firebase.jsx";
 
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set } from "../../Firebase.jsx";
 import { app } from "../../Firebase.jsx";
 
 // ✅ Initialize Realtime Database

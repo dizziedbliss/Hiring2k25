@@ -118,10 +118,7 @@ import React, { useState } from "react";
 import Pokeball from "../components/Pokeball.jsx";
 
 // ✅ Firebase imports
-// import { getDatabase, ref, set } from "../../firebase/database";
-// import { app } from "../../Firebase.jsx";
-
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set } from "../../firebase/database";
 import { app } from "../../Firebase.jsx";
 
 // ✅ Initialize Realtime Database
