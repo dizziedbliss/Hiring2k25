@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomePage = ({ onNavigate }) => (
-  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8 bg-pink-100 m-0">
+  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8">
     <div className="w-full text-center">
       <img
         src="./meriise.png"
@@ -16,8 +16,8 @@ const HomePage = ({ onNavigate }) => (
     </div>
 
     <div className="flex-grow flex items-center justify-center">
-      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto flex flex-col items-center gap-y-6 sm:gap-y-8 md:gap-y-10 text-center animate-fade-in">
-        <div className="py-4 rounded-lg">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto flex flex-col items-center gap-y-2 sm:gap-y-8 md:gap-y-10 text-center animate-fade-in">
+        <div className="py-2 rounded-lg">
           <h3 className="font-fredoka text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 tracking-wide">
             Trainers be Ready
           </h3>

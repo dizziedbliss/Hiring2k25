@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomePage = ({ onNavigate }) => (
-  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8 bg-pink-100 m-0">
+  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8">
     <div className="w-full text-center">
       <img
         src="./meriise.png"
@@ -17,12 +17,12 @@ const HomePage = ({ onNavigate }) => (
 
     <div className="flex-grow flex items-center justify-center">
       <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto flex flex-col items-center gap-y-6 sm:gap-y-8 md:gap-y-10 text-center animate-fade-in">
-        <div className="py-4 rounded-lg">
+        <div className="py-2 rounded-lg">
           <h3 className="font-fredoka text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 tracking-wide">
             Trainers be Ready
           </h3>
         </div>
-        <div className="flex items-center justify-center lg:mb-10">
+        <div className="flex items-center justify-center m-6">
           <div className="inline-block">
             {/* Top Text: "WE ARE" */}
             <h2 className="font-pokemon-solid text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0] leading-[35px] sm:leading-[40px] md:leading-[45px] lg:leading-[50px] text-center [-webkit-text-stroke:2px_#316eb5] sm:[-webkit-text-stroke:3px_#316eb5] mb-[-15px] sm:mb-[-18px] md:mb-[-20px] lg:mb-[-22px] text-[#ffca02] [text-shadow: -2px_6px_0.9px_#000000E1] sm:[text-shadow: -3px_8px_0.9px_#000000E1] place-self-start -mb-8 sm:-mb-10 md:-mb-12 lg:-mb-14 ml-2 sm:ml-3 md:ml-4">

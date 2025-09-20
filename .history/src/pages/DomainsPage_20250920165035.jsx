@@ -10,7 +10,7 @@ const DomainsPage = ({ onNavigate }) => {
       <img
         src="./meriise.png"
         alt="MERIISE Foundation Logo"
-        className="h-32"
+        className="mx-auto h-32  object-contain mt-[-50px] mr-[30px]"
         onError={(e) => {
           e.target.onerror = null;
           e.target.src =

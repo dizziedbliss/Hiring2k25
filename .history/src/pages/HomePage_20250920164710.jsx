@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomePage = ({ onNavigate }) => (
-  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8 bg-pink-100 m-0">
+  <main className="min-h-screen w-full bg-[#E0F2FE] flex flex-col p-4 sm:p-6 md:p-8 bg-pink-50">
     <div className="w-full text-center">
       <img
         src="./meriise.png"
