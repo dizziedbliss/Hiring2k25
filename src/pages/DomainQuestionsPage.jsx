@@ -64,7 +64,7 @@ const DomainQuestionsPage = ({ domain, onNavigate }) => {
                     <div className="text-center mt-6">
                         <button
                             onClick={() => onNavigate("domainForm", domain.id)}
-                            className={`px-6 py-2 font-fredoka bg-white text-gray-800  rounded-lg shadow-md border-2 ${domain.theme.border} font-semibold`}
+                            className={`px-6 py-2 bg-white ${domain.theme.border} font-fredoka font-semibold rounded-lg border-2 border-gray-300 shadow-[3px_3px_0px_#000] hover:shadow-[1px_1px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150 `}
                         >
                             Claim your card
                         </button>
