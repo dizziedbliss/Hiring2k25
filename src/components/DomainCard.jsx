@@ -60,14 +60,14 @@ const DomainCard = ({ data, isExpanded, onToggle, onApply }) => {
                                         onApply();
                                     }}
                                     className={`
-                                        mt-4 mb-2 px-12 py-1.5 rounded-lg text-lg 
+                                        mt-4 mb-2 px-6 py-1 rounded-lg text-lg 
                                         text-gray-800 bg-white  border-2 border-black
                                         shadow-[3px_3px_0px_#000]
                                         hover:shadow-[1px_1px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5
                                         transition-all duration-150 font-fredoka font-semibold
                                     `}
                                 >
-                                    Apply
+                                    know more
                                 </button>
                             </div>
                         </div>

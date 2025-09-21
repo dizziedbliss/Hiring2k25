@@ -1,191 +1,191 @@
 import React, { useState, useEffect, useRef } from "react";
+import Pokeball from "../components/Pokeball.jsx";
+import { exportComponentAsPNG } from "react-component-export-image";
 
-// The Pokeball component is now defined inside this file to resolve the import error.
-const Pokeball = ({ className = "" }) => (
-  <div
-    className={`absolute w-12 h-12 rounded-full bg-white border-4 border-black overflow-hidden flex flex-col items-center justify-center ${className}`}
-  >
-    <div className="w-full h-1/2 bg-red-500"></div>
-    <div className="absolute w-4 h-4 rounded-full bg-white border-2 border-black"></div>
-  </div>
-);
+const CongratulationsPage = ({ domain, formData, onNavigate }) => {
+    const [pokemon, setPokemon] = useState(null);
+    const [pokemonImageBase64, setPokemonImageBase64] = useState(null);
+    const [logoImageBase64, setLogoImageBase64] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const cardRef = useRef(null);
 
-const CongratulationsPage = ({ domain, formData }) => {
-  const [pokemon, setPokemon] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const fetchRandomPokemon = async () => {
-      setLoading(true);
-      try {
-        // Fetching a list of all pokemon to get a truly random one up to Gen 9
-        const countResponse = await fetch(
-          "https://pokeapi.co/api/v2/pokemon-species/?limit=1"
-        );
-        const countData = await countResponse.json();
-        const randomId = Math.floor(Math.random() * countData.count) + 1;
-
-        const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${randomId}`
-        );
-        if (!response.ok) throw new Error("Pokemon not found!");
-        const data = await response.json();
-        setPokemon({
-          id: data.id,
-          name: data.name,
-          image: data.sprites.other["official-artwork"].front_default,
-        });
-      } catch (error) {
-        console.error("Failed to fetch Pokémon:", error);
-        // Fetch a default as fallback (Pikachu)
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/25`);
-        const data = await response.json();
-        setPokemon({
-          id: data.id,
-          name: data.name,
-          image: data.sprites.other["official-artwork"].front_default,
-        });
-      } finally {
-        setLoading(false);
-      }
+    const toBase64 = async (url) => {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        } catch (error) {
+            console.error(`Error converting image to Base64: ${url}`, error);
+            return null;
+        }
     };
-    fetchRandomPokemon();
-  }, []);
 
-  // --- FIX START ---
-  // Updated handleSave to use html2canvas for downloading the card
-  const handleSave = () => {
-    // First, check if the html2canvas library is available
-    if (cardRef.current && typeof html2canvas === "function") {
-      html2canvas(cardRef.current, {
-        useCORS: true, // Crucial for fetching the external Pokémon image
-        backgroundColor: null, // Maintains transparency
-        scale: 2, // Increase scale for higher resolution output
-      }).then((canvas) => {
-        // Create a temporary link element to trigger the download
-        const link = document.createElement("a");
-        // Set the download filename using the student's name
-        link.download = `${formData.name || "trainer"}-card.png`;
-        // Convert the canvas to a PNG image data URL
-        link.href = canvas.toDataURL("image/png");
-        // Programmatically click the link to start the download
-        link.click();
-      });
-    } else {
-      // Fallback alert if the library isn't loaded
-      console.error(
-        "html2canvas is not loaded. Make sure to include it in your index.html"
-      );
-      alert("Could not save the card. The required library is missing.");
-    }
-  };
-  // --- FIX END ---
+    useEffect(() => {
+        const fetchAndPrepareAssets = async () => {
+            setLoading(true);
+            try {
+                const logoBase64 = await toBase64("./meriise.png");
+                setLogoImageBase64(logoBase64);
 
-  if (!domain) {
-    return (
-      <div className="text-center">
-        <h1 className="text-2xl font-bold">Domain not found!</h1>
-      </div>
-    );
-  }
+                const countResponse = await fetch(
+                    "https://pokeapi.co/api/v2/pokemon-species/?limit=1"
+                );
+                const countData = await countResponse.json();
+                const randomId =
+                    Math.floor(Math.random() * countData.count) + 1;
+                const response = await fetch(
+                    `https://pokeapi.co/api/v2/pokemon/${randomId}`
+                );
+                if (!response.ok) throw new Error("Pokemon not found!");
+                const data = await response.json();
+                const imageUrl =
+                    data.sprites.other["official-artwork"].front_default;
+                const pokemonBase64 = await toBase64(imageUrl);
+                setPokemonImageBase64(pokemonBase64);
+                setPokemon({ id: data.id, name: data.name });
+            } catch (error) {
+                console.error("Failed to fetch assets:", error);
+                const logoBase64 = await toBase64("./meriise.png");
+                setLogoImageBase64(logoBase64);
+                const response = await fetch(
+                    `https://pokeapi.co/api/v2/pokemon/25`
+                );
+                const data = await response.json();
+                const imageUrl =
+                    data.sprites.other["official-artwork"].front_default;
+                const pokemonBase64 = await toBase64(imageUrl);
+                setPokemonImageBase64(pokemonBase64);
+                setPokemon({ id: data.id, name: data.name });
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchAndPrepareAssets();
+    }, []);
 
-  return (
-    <main className="min-h-screen w-full bg-gray-200 flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-sm mx-auto flex flex-col items-center gap-y-5 text-center animate-fade-in">
-        {/* Removed negative margins to keep the logo inside the container flow */}
-        <img
-          src="./meriise.png"
-          alt="MERIISE Foundation Logo"
-          className="mx-auto h-32 object-contain"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src =
-              "https://placehold.co/300x100/E0F2FE/0ea5e9?text=MERIISE+FOUNDATION";
-          }}
-        />
-        <div
-          className={`w-full p-6 bg-stone-100 rounded-3xl border-4 border-gray-400 relative`}
-        >
-          <Pokeball className="top-8 -left-8" />
-          <Pokeball className="bottom-24 -right-10 transform scale-150" />
-          <Pokeball className="bottom-2 -left-6 transform scale-75" />
+    const handleSave = () => {
+        exportComponentAsPNG(cardRef, {
+            fileName: `${formData?.name || "trainer"}-card.png`,
+            html2CanvasOptions: {
+                scale: 3, // Use 3x scale for better quality
+                useCORS: true, // Handle cross-origin images
+                allowTaint: true,
+                backgroundColor: null, // Transparent background
+                logging: false,
+            },
+        });
+    };
 
-          <h2 className="text-xl font-bold text-gray-800">Congratulations</h2>
-          <p className="text-gray-600 mb-4">
-            You have been add to the priority list
-          </p>
-
-          {/* Re-architected the card layout to use Flexbox for proper alignment */}
-          <div
-            ref={cardRef}
-            className="w-full aspect-[3/4] bg-[#1d1d1d] rounded-2xl p-4 relative overflow-hidden shadow-2xl flex flex-col"
-          >
-            {loading || !pokemon ? (
-              <div className="text-white flex items-center justify-center h-full">
-                Loading your Pokémon...
-              </div>
-            ) : (
-              <>
-                {/* Decorative Background Elements */}
-                <p className="absolute left-3 top-3 text-4xl md:text-5xl font-bold text-white/40 font-pokemon-hollow tracking-[6px] z-0">
-                  #{String(pokemon.id).padStart(4, "0")}
-                </p>
-                <p
-                  className="absolute right-3 top-1/2 -translate-y-1/2 font-pokemon-hollow text-4xl md:text-5xl font-bold text-white capitalize tracking-widest z-0"
-                  style={{ writingMode: "vertical-rl" }}
+    if (!domain) {
+        return (
+            <div className="text-center">
+                <h1 className="text-2xl font-bold">Domain not found!</h1>
+                <button
+                    onClick={() => onNavigate("domains")}
+                    className="mt-4 px-6 py-2 bg-gray-200 rounded-lg"
                 >
-                  {pokemon.name}
-                </p>
+                    Back to Domains
+                </button>
+            </div>
+        );
+    }
 
-                {/* Image Container (Takes up remaining space) */}
-                <div className="flex-grow w-full relative flex items-center justify-center">
-                  <img
-                    src={pokemon.image}
-                    alt={pokemon.name}
-                    crossOrigin="anonymous" // Important: Allows html2canvas to render the external image
-                    className="max-w-full max-h-full object-contain z-10"
-                  />
-                </div>
-
-                {/* Details Container (Fixed at the bottom) */}
-                <div className="flex-shrink-0 text-center z-10 pt-2">
-                  <h3 className="text-3xl font-bold text-white capitalize">
-                    {formData.name || "Trainer"}
-                  </h3>
-                  <p className="text-lg font-semibold text-white uppercase tracking-wider mt-1">
-                    {formData.usn || "N/A"}
-                  </p>
-                  <p className="text-md font-semibold text-white mt-1">
-                    {domain.name}
-                  </p>
-                </div>
-
-                {/* MERIISE Logo (Absolute position, on top) */}
+    return (
+        <main className="min-h-screen w-full bg-[#FDFBF8] flex items-center justify-center p-4 font-sans flex-col">
+            <div className="w-full max-w-sm mx-auto flex flex-col items-center gap-y-5 text-center animate-fade-in">
                 <img
-                  src="./meriise.png"
-                  alt="Small Logo"
-                  className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                    src="./meriise.png"
+                    alt="MERIISE Foundation Logo"
+                    className="mx-auto h-32 object-contain"
                 />
-              </>
-            )}
-          </div>
-          <p className="text-xs text-gray-500 mt-2">
-            *Please bring the copy to the Auditions
-          </p>
-          <button
-            onClick={handleSave}
-            className="mt-4 px-6 py-2 bg-white text-gray-800 font-fredoka font-semibold rounded-lg shadow-md border-2 border-gray-300"
-          >
-            Click to save this
-          </button>
-          <p className="font-bold text-gray-700 mt-3">
-            See you soon at the Auditions
-          </p>
-        </div>
-      </div>
-    </main>
-  );
+                <div
+                    className={`w-full p-6 bg-stone-100 rounded-3xl border-4 border-gray-400 relative`}
+                >
+                    <Pokeball className="top-8 -left-8" />
+                    <Pokeball className="bottom-24 -right-10 transform scale-150" />
+                    <Pokeball className="bottom-2 -left-6 transform scale-75" />
+                    <h2 className="text-xl font-bold text-gray-800">
+                        Congratulations
+                    </h2>
+                    <p className="text-gray-600 mb-4">
+                        You have been added to the priority list
+                    </p>
+
+                    <div
+                        ref={cardRef}
+                        className="w-full aspect-[3/4] bg-[#1d1d1d] rounded-2xl p-4 relative overflow-hidden shadow-2xl"
+                    >
+                        {loading ||
+                        !pokemon ||
+                        !pokemonImageBase64 ||
+                        !logoImageBase64 ? (
+                            <div className="text-white flex items-center justify-center h-full">
+                                Generating your card...
+                            </div>
+                        ) : (
+                            <>
+                                <p className="absolute left-3 top-3 text-4xl md:text-5xl font-bold text-white/40 font-pokemon-hollow tracking-[6px] z-0">
+                                    #{String(pokemon.id).padStart(4, "0")}
+                                </p>
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col items-center z-0">
+                                    {pokemon.name
+                                        .split("")
+                                        .map((char, index) => (
+                                            <span
+                                                key={index}
+                                                className="font-pokemon-hollow text-4xl md:text-5xl font-bold text-white capitalize tracking-widest leading-none"
+                                            >
+                                                {char}
+                                            </span>
+                                        ))}
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center p-8">
+                                    <img
+                                        src={pokemonImageBase64}
+                                        alt={pokemon.name}
+                                        className="max-w-full max-h-full object-contain z-10"
+                                    />
+                                </div>
+                                <div className="absolute bottom-4 left-4 text-left z-20">
+                                    <h3 className="text-3xl -mb-2 font-fredoka font-bold text-white capitalize">
+                                        {formData.name || "Trainer"}
+                                    </h3>
+                                    <p className="text-lg font-fredoka text-white uppercase tracking-wider mt-1">
+                                        {formData.usn || "N/A"}
+                                    </p>
+                                    <p className="text-md -mt-1 font-fredoka text-white ">
+                                        {domain.name}
+                                    </p>
+                                </div>
+                                <img
+                                    src={logoImageBase64}
+                                    alt="Small Logo"
+                                    className="absolute bottom-4 right-4 h-12 w-auto opacity-80 z-20"
+                                />
+                            </>
+                        )}
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">
+                        *Please bring the copy to the Auditions
+                    </p>
+                    <button
+                        onClick={handleSave}
+                        className={`px-6 py-2 bg-white ${domain.theme.border} font-fredoka font-semibold rounded-lg border-2 shadow-[3px_3px_0px_#000] hover:shadow-[1px_1px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150 mt-3`}
+                    >
+                        download
+                    </button>
+                    <p className="font-bold text-gray-700 mt-3">
+                        See you soon at the Auditions
+                    </p>
+                </div>
+            </div>
+        </main>
+    );
 };
 
 export default CongratulationsPage;

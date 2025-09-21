@@ -4,7 +4,7 @@ export const domainsData = [
         id: "digital",
         name: "Digital",
         description:
-            "Love designing, editing, or just making content that clicks? Then the Digital Team is your place to bring ideas, visuals, and edit videos, and bring them to life in a fun, creative way.",
+            " Love designing, editing, or creating content that clicks? The Digital Team is where your ideas come to life in fun and engaging ways.",
         imageUrl:
             "./pikahello.png", // Pikachu
         evolvedImageUrl:
@@ -17,13 +17,13 @@ export const domainsData = [
             darkerBg: "bg-yellow-500",
         },
         content:
-            "The Digital Team is where creativity meets action. We design posters, reels, carousels, and edits that capture the real buzz of college life. From quick edits and color grading to captions and motion graphics — this is where stories come alive.\n\nWhy join? You’ll learn tools like Canva, Figma, Photoshop, and Premiere Pro while building design, branding, and storytelling skills. Every project you make will not only boost MERIISE’s vibe but also your own creative confidence.",
+            "We turn ideas into posters, reels, carousels, and short edits that capture the energy of college life. From quick edits and motion graphics to clever captions, every task is a chance to be creative.\n\nAt MERIISE, you’ll get hands-on with tools like Canva, Figma, Photoshop, and Premiere Pro. You’ll improve your design, storytelling, and collaboration skills while contributing to real college events and activities. Every project you create helps the campus come alive and boosts your confidence as a creator.",
     },
     {
         id: "technical",
         name: "Technical",
         description:
-            "If you like solving problems or building new things, the Technical Team is for you. Dive deep into the world of coding, explore software and apps, create logical flows, solve challenges, and slowly sharpen your skills to turn your future ideas into smart solutions.",
+            "If you enjoy solving problems or building new things, the Technical Team is where ideas turn into working solutions.",
         imageUrl:
             "./chartech.png", // Charmander
         evolvedImageUrl:
@@ -36,13 +36,13 @@ export const domainsData = [
             darkerBg: "bg-orange-500",
         },
         content:
-            "The Technical Team is where curiosity turns into code. We build small tools, websites, automations, and campus apps that solve real problems — from managing registrations to generating certificates and more. You don’t need to be a ‘pro coder’ to start; if you enjoy debugging, Googling smartly, and making things work, you’ll grow fast here. We explore React, Node.js, Python, basic APIs, and version control (Git), but more importantly, we learn how to think clearly and ship simple, working solutions. You’ll pair with seniors, contribute to mini-projects, and pick up best practices as you go. If you’ve ever felt the rush of getting something to finally run — welcome home.",
+            "We build apps, websites, automations, and tools that make college projects and events run smoothly — from registrations to certificates. No matter your level, you’ll learn by coding, debugging, and problem-solving with real projects. You’ll explore Python, React, Node.js, APIs, and Git while developing logical thinking and teamwork.\n\nAt MERIISE, your work has impact — the projects you create are used by students and staff, giving you practical experience you can carry anywhere.",
     },
     {
         id: "creative",
         name: "Creative",
         description:
-            "Like drawing, painting, or just being creative? The Creative Team is all about turning your imagination into beautiful characters and artwork. It's a space to create your own story of your creativity.",
+            " Love sketching, doodling, or experimenting with visuals? The Creative Team is where imagination meets expression.",
         imageUrl:
             "./bulbacreative.png", // Bulbasaur
         evolvedImageUrl:
@@ -55,13 +55,13 @@ export const domainsData = [
             darkerBg: "bg-green-500",
         },
         content:
-            "Creative is where ideas get personality. We sketch characters, draw illustrations, craft event mascots, make quirky doodles, and build visual worlds that give MERIISE its unique vibe. You don’t need a perfect portfolio — you need patience, playfulness, and the willingness to try again. Whether you draw on paper or tablet, love typography, or just enjoy experimenting with shape and style, you’ll find a corner here. We do quick challenges, moodboards, collabs with the Digital team, and plenty of fun experiments to sharpen your visual voice. If you love to create things that make people smile, this team will feel like your sketchbook.",
+            "We design illustrations, event mascots, posters, and quirky doodles that give MERIISE its unique. \n\nYou’ll take part in moodboards, creative challenges, and collaborative projects. Your work shapes the visuals of college events and initiatives, letting your creativity shine while helping MERIISE stand out on campus.",
     },
     {
         id: "editorial",
         name: "Editorial",
         description:
-            "If you enjoy writing or communicating, the Editorial Team is the place to be. It helps in voicing ideas clearly, create interesting content, and improve your communication skills as you go.",
+            "If you enjoy writing or communicating, the Editorial Team helps ideas reach people in clear and engaging ways.",
         imageUrl:
             "./squirtleedit.png", // Squirtle
         evolvedImageUrl:
@@ -74,13 +74,13 @@ export const domainsData = [
             darkerBg: "bg-sky-500",
         },
         content:
-            "Editorial is the voice of MERIISE. We write announcements that don’t sound boring, guides that are actually useful, scripts for videos, captions that feel human, and stories that make our events memorable. If you enjoy structuring thoughts, simplifying ideas, and adding a touch of personality to words, you’ll love it here. We also learn how to edit ruthlessly, proofread cleanly, and collaborate with design and digital teams to make sure the message lands. Even if you’re shy about writing, we’ll help you practice with micro-tasks — from punchy one-liners to short posts — and grow your confidence steadily.",
+            "We write captions, scripts, announcements, and guides that connect with students and make events memorable. You’ll practice expressing ideas clearly and adding personality to your words. Even small tasks like punchy one-liners or short posts help you grow as a communicator.\n\nAt MERIISE, your writing helps the campus community engage, participate, and enjoy every event.",
     },
     {
         id: "research",
         name: "Startup & Research",
         description:
-            "Got a big idea? Love to explore and experiment? The Startup & Research team is where you can nurture your inner innovator. We brainstorm, build business plans, and turn curiosity into real-world projects.",
+            "Got a big idea? Love experimenting? The Startup & Research Team is where curiosity turns into action.",
         imageUrl:
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/656.png", // Porygon
         evolvedImageUrl:
@@ -93,13 +93,13 @@ export const domainsData = [
             darkerBg: "bg-purple-500",
         },
         content:
-            "Startup & Research is for the curious builder. We take fuzzy ideas and shape them into workable concepts — quick prototypes, user surveys, tiny MVPs, and simple models to test if something is worth pursuing. You’ll learn how to think in hypotheses, validate assumptions, and present your ideas with clarity. Sometimes that means spreadsheets, sometimes slides, sometimes a rough product — whatever helps us learn fast. If you’ve ever had a ‘what if we tried this…’ moment, this team will help you turn that spark into something real, one small step at a time.",
+            "We take ideas and test them with quick prototypes, surveys, and simple models to see what works. It’s about asking questions, learning fast, and turning sparks into projects. You’ll gain skills in research, innovation, and pitching while contributing to mini-projects or campus initiatives.\n\n At MERIISE, your curiosity becomes practical experience, letting you experiment, learn, and create real solutions.",
     },
     {
         id: "events",
         name: "Event Organizing",
         description:
-            "Love bringing people together and making things happen? The Event Organizing team is your stage. From planning workshops to managing large-scale fests, you'll learn how to lead, coordinate, and create memorable experiences.",
+            "Love bringing people together and making things happen? The Event Organizing Team is your chance to lead and coordinate impactful college experiences.",
         imageUrl:
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/393.png", // Jigglypuff
         evolvedImageUrl:
@@ -112,13 +112,13 @@ export const domainsData = [
             darkerBg: "bg-indigo-500",
         },
         content:
-            "Event Organizing is where chaos becomes choreography. We plan timelines, design the flow, set up spaces, coordinate with speakers, handle registrations, and make sure everything feels smooth for the people attending. You’ll work closely with every other team and learn how to manage moving pieces calmly — checklists, calls, permissions, props, backups, the works. It’s hard work but deeply satisfying when the lights turn on and everything clicks. If you like making things happen and caring for details that others miss, you’ll love the adrenaline here.",
+            "We plan and manage workshops, fests, and activities, handling timelines, speakers, registrations, and event flow. You’ll learn to keep things running smoothly, even under pressure.By joining, you’ll build leadership, teamwork, and time management skills.\n\n At MERIISE, you see your efforts turn into live events that students enjoy — a truly rewarding experience.",
     },
     {
         id: "lost",
         name: "Feeling Lost?",
         description:
-            "Not sure where you belong? That's okay. ME-RIISE is all about exploring. You don't need to have it all figured out yet. Just bring your curiosity and we will help you try different things until you find what clicks.",
+            " Not sure where you fit yet? That’s completely fine — MERIISE is built for exploration.",
         imageUrl:
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png", // Mew
         evolvedImageUrl:
@@ -131,6 +131,6 @@ export const domainsData = [
             darkerBg: "bg-pink-500",
         },
         content:
-            "Feeling lost is perfectly normal — it means you’re exploring. At MERIISE, you can try different things without pressure and discover what energizes you. Sit with the Digital team for a mini-design task, shadow the Event folks during a setup, draft a tiny caption with Editorial, or pair-program a small fix with Tech. We’ll help you taste-test skills until something clicks. You don’t have to declare a ‘final choice’ on day one — just bring curiosity, and we’ll help you build direction step by step.",
+            "You can try tasks across different teams — design with Digital, draft captions for Editorial, shadow Event Organizers, or test small projects in Technical or Startup.\n\nThis helps you explore your interests, discover your strengths, and learn new skills. At MERIISE, being unsure is part of the journey — it’s how you find the team and work that excites you most.",
     },
 ];
