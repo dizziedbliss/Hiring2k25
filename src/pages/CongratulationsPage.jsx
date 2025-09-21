@@ -29,38 +29,86 @@ const CongratulationsPage = ({ domain, formData, onNavigate }) => {
         const fetchAndPrepareAssets = async () => {
             setLoading(true);
             try {
-                const logoBase64 = await toBase64("./meriise.png");
-                setLogoImageBase64(logoBase64);
+                // Load logo in parallel with Pokémon data for efficiency
+                const logoPromise = toBase64("./meriise.png");
 
-                const countResponse = await fetch(
-                    "https://pokeapi.co/api/v2/pokemon-species/?limit=1"
+                // Set a default Pokémon ID in case the count endpoint fails
+                let pokemonId = 25; // Default to Pikachu (reliable fallback)
+
+                try {
+                    // Fetch total count with 3 second timeout
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(
+                        () => controller.abort(),
+                        3000
+                    );
+
+                    const countResponse = await fetch(
+                        "https://pokeapi.co/api/v2/pokemon-species/?limit=1",
+                        { signal: controller.signal }
+                    );
+                    clearTimeout(timeoutId);
+
+                    if (countResponse.ok) {
+                        const countData = await countResponse.json();
+                        // Avoid extremely high IDs that might not exist
+                        const safeCount = Math.min(countData.count, 900);
+                        pokemonId = Math.floor(Math.random() * safeCount) + 1;
+                    }
+                } catch (error) {
+                    console.log("Using fallback Pokémon ID:", pokemonId);
+                }
+
+                // Fetch the Pokémon with 5 second timeout
+                const pokemonController = new AbortController();
+                const pokemonTimeoutId = setTimeout(
+                    () => pokemonController.abort(),
+                    5000
                 );
-                const countData = await countResponse.json();
-                const randomId =
-                    Math.floor(Math.random() * countData.count) + 1;
+
                 const response = await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${randomId}`
+                    `https://pokeapi.co/api/v2/pokemon/${pokemonId}`,
+                    { signal: pokemonController.signal }
                 );
-                if (!response.ok) throw new Error("Pokemon not found!");
+                clearTimeout(pokemonTimeoutId);
+
                 const data = await response.json();
                 const imageUrl =
                     data.sprites.other["official-artwork"].front_default;
-                const pokemonBase64 = await toBase64(imageUrl);
+
+                // Wait for both image and logo to load
+                const [pokemonBase64, logoBase64] = await Promise.all([
+                    toBase64(imageUrl),
+                    logoPromise,
+                ]);
+
                 setPokemonImageBase64(pokemonBase64);
+                setLogoImageBase64(logoBase64);
                 setPokemon({ id: data.id, name: data.name });
             } catch (error) {
                 console.error("Failed to fetch assets:", error);
-                const logoBase64 = await toBase64("./meriise.png");
-                setLogoImageBase64(logoBase64);
-                const response = await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/25`
-                );
-                const data = await response.json();
-                const imageUrl =
-                    data.sprites.other["official-artwork"].front_default;
-                const pokemonBase64 = await toBase64(imageUrl);
-                setPokemonImageBase64(pokemonBase64);
-                setPokemon({ id: data.id, name: data.name });
+
+                // Ultimate fallback - guaranteed to work
+                try {
+                    const logoBase64 = await toBase64("./meriise.png");
+                    setLogoImageBase64(logoBase64);
+
+                    // Pikachu is always reliable
+                    const response = await fetch(
+                        "https://pokeapi.co/api/v2/pokemon/25"
+                    );
+                    const data = await response.json();
+                    const imageUrl =
+                        data.sprites.other["official-artwork"].front_default;
+                    const pokemonBase64 = await toBase64(imageUrl);
+
+                    setPokemonImageBase64(pokemonBase64);
+                    setPokemon({ id: data.id, name: data.name });
+                } catch (finalError) {
+                    // Even if everything fails, don't leave user hanging
+                    setPokemon({ id: 25, name: "pikachu" });
+                    setLogoImageBase64("./meriise.png"); // Direct fallback
+                }
             } finally {
                 setLoading(false);
             }
